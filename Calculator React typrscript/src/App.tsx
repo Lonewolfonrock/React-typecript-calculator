@@ -6,14 +6,23 @@ import data from './Componets/data';
 import NumbersDisplay from './Componets/Calculator'; // Import the component
 
 function App() {
+  const [inputvalues, setInputvalues] = React.useState('');
+
+
   const values = data.map((items) => {
     console.log(`Rendering Calculator for id ${items.id}`);
+
+    const handelbutton=(value: string)=>{
+      setInputvalues((prevValue)=> prevValue +value)
+    }
+
     return (
       <NumbersDisplay
         key={items.id}
         calcValues={items.calcValues}
         id={items.id} 
         operator={items.operator}
+        handelbutton ={()=>handelbutton(items.calcValues)}
         
       />
     );
@@ -23,7 +32,7 @@ function App() {
     <>
       <div>
         <div className="Main">
-          <input type="Text"></input>
+          <input type="Text" value={inputvalues} onChange={(e)=>setInputvalues(e.target.value)}></input>
           <div className="buttons">
             <div>
               {values}

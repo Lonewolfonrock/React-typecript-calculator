@@ -2,12 +2,13 @@ interface calcprops{
   calcValues:string
   id:number
   operator:boolean
+  handelbutton:(value:string)=>void
 }
 
 export default function NumbersDisplay(props:calcprops){
   const handelbtn=()=>{
-    console.log(`button id with ${props.operator} was clicked`)
-    
+    props.operator?"Not implemented yet":props.handelbutton(props.calcValues)
+
   
   }
 
