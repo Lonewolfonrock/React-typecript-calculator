@@ -40,6 +40,9 @@ button{
   border: none;
   color: white;
   cursor: pointer;
+  transition:  0.9s;
+  user-select: none;
+
 }
 
 .buttons{
@@ -51,4 +54,11 @@ button{
 #equalto{
   background-color: red;
   width: 170px;
+}
+button:active{
+  transition: 0.1s;
+  background-color: #7465ca;
+}
+#equalto:active{
+  background-color: rgb(252, 99, 99);
 }
