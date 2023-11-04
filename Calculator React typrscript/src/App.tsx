@@ -1,22 +1,35 @@
 import React, { useState } from 'react';
 import './App.css';
 import data from './Componets/data';
-import NumbersDisplay from './Componets/Calculator'; // Import the component
+import NumbersDisplay from './Componets/Calculator'; 
 
 function App() {
   const [inputvalues, setInputvalues] = useState('');
-  const item: string[] = []; // Change the type to string array to store input values
+  const [item, setItem] = useState<string[]>([]);
+  
 
   const values = data.map((items) => {
+    console.log(item)
+
     const handelbutton = (value: string) => {
       if (!items.operator) {
         setInputvalues((prevValue) => prevValue + value);
+        console.log(item)
       } else {
-        item.push(inputvalues); 
-        console.log(item);
-        setInputvalues('');
+        if (items.calcValues === 'C') {
+          setInputvalues('');
+        } else if (!items.operator) {
+          setInputvalues((prevValue) => prevValue + value);
+        } else {
+          setItem((prevItem) => [...prevItem, inputvalues, items.calcValues]);
+          setInputvalues('');
+        }
+        
       }
     };
+
+    
+
 
     return (
       <NumbersDisplay

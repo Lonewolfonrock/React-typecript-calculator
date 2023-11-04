@@ -42,7 +42,7 @@ export default[
     },
     {
         id:8,
-        calcValues:"X",
+        calcValues:"*",
         operator:true
 
     },
