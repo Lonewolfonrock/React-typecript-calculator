@@ -2,14 +2,17 @@ interface calcprops{
   calcValues:string
   id:number
   operator:boolean
-  handelbutton:(value:string)=>void
+  handelbutton:(value:string|boolean)=>void
 }
 
 export default function NumbersDisplay(props:calcprops){
   const handelbtn=()=>{
-    props.operator?"Not implemented yet":props.handelbutton(props.calcValues)
-
-  
+    if (props.operator) {
+      props.handelbutton(true); // Pass a boolean value 'true'
+    } else {
+      props.handelbutton(props.calcValues); // Pass the calcValues as usual
+    }
+   
   }
 
   return(
@@ -17,9 +20,3 @@ export default function NumbersDisplay(props:calcprops){
   )
   
 }
-
-
- 
-
-
-

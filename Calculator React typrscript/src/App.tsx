@@ -1,29 +1,30 @@
-import React from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import React, { useState } from 'react';
 import './App.css';
 import data from './Componets/data';
 import NumbersDisplay from './Componets/Calculator'; // Import the component
 
 function App() {
-  const [inputvalues, setInputvalues] = React.useState('');
-
+  const [inputvalues, setInputvalues] = useState('');
+  const item: string[] = []; // Change the type to string array to store input values
 
   const values = data.map((items) => {
-    console.log(`Rendering Calculator for id ${items.id}`);
-
-    const handelbutton=(value: string)=>{
-      setInputvalues((prevValue)=> prevValue +value)
-    }
+    const handelbutton = (value: string) => {
+      if (!items.operator) {
+        setInputvalues((prevValue) => prevValue + value);
+      } else {
+        item.push(inputvalues); 
+        console.log(item);
+        setInputvalues('');
+      }
+    };
 
     return (
       <NumbersDisplay
         key={items.id}
         calcValues={items.calcValues}
-        id={items.id} 
+        id={items.id}
         operator={items.operator}
-        handelbutton ={()=>handelbutton(items.calcValues)}
-        
+        handelbutton={() => handelbutton(items.calcValues)}
       />
     );
   });
@@ -32,7 +33,7 @@ function App() {
     <>
       <div>
         <div className="Main">
-          <input type="Text" value={inputvalues} onChange={(e)=>setInputvalues(e.target.value)}></input>
+          <input type="text" value={inputvalues} onChange={(e) => setInputvalues(e.target.value)}></input>
           <div className="buttons">
             <div>
               {values}
