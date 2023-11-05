@@ -9,15 +9,14 @@ function App() {
   
 
   const values = data.map((items) => {
-    console.log(item)
 
     const handelbutton = (value: string) => {
       if (!items.operator) {
         setInputvalues((prevValue) => prevValue + value);
-        console.log(item)
       } else {
         if (items.calcValues === 'C') {
           setInputvalues('');
+          setItem([])
         } else if (!items.operator) {
           setInputvalues((prevValue) => prevValue + value);
         } else {
@@ -27,7 +26,7 @@ function App() {
         
       }
     };
-
+console.log(item)
     
 
 
