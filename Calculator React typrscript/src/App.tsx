@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import data from './Componets/data';
 import NumbersDisplay from './Componets/Calculator'; 
@@ -6,27 +6,47 @@ import NumbersDisplay from './Componets/Calculator';
 function App() {
   const [inputvalues, setInputvalues] = useState('');
   const [item, setItem] = useState<string[]>([]);
+
   
+  useEffect(() => {
+    console.log(item);
+    if (item[1] === '+') {
+      const num1 = parseFloat(item[0]);
+      const num2 = parseFloat(item[2]);
+      if (!isNaN(num1) && !isNaN(num2)) {
+        const value = num1 + num2;
+        setInputvalues(value.toString());
+      }
+    }
+  }, [item]);
+
+
+
 
   const values = data.map((items) => {
 
     const handelbutton = (value: string) => {
       if (!items.operator) {
         setInputvalues((prevValue) => prevValue + value);
+        
       } else {
+        
         if (items.calcValues === 'C') {
           setInputvalues('');
           setItem([])
         } else if (!items.operator) {
           setInputvalues((prevValue) => prevValue + value);
-        } else {
+        }
+        else {
           setItem((prevItem) => [...prevItem, inputvalues, items.calcValues]);
+          console.log(item)
           setInputvalues('');
+
         }
         
       }
     };
-console.log(item)
+
     
 
 
@@ -49,9 +69,10 @@ console.log(item)
           <div className="buttons">
             <div>
               {values}
-              <button className="mainbtn" id="equalto">
-                =
-              </button>
+              <button id='equalto' onClick={() => { setItem([...item, inputvalues, '=']);  setTimeout(() => {
+    setItem([]);
+  }, 1000); }}>=</button>
+
             </div>
           </div>
         </div>
@@ -61,3 +82,4 @@ console.log(item)
 }
 
 export default App;
+

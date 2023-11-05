@@ -105,5 +105,6 @@ export default[
         id:18,
         calcValues:".",
         operator:false
-    }
+    },
+    
 ]
