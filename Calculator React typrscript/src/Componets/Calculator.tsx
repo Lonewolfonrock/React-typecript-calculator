@@ -8,9 +8,9 @@ interface calcprops{
 export default function NumbersDisplay(props:calcprops){
   const handelbtn=()=>{
     if (props.operator) {
-      props.handelbutton(true); // Pass a boolean value 'true'
+      props.handelbutton(true); 
     } else {
-      props.handelbutton(props.calcValues); // Pass the calcValues as usual
+      props.handelbutton(props.calcValues); 
     }
    
   }

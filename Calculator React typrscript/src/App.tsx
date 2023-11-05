@@ -10,14 +10,59 @@ function App() {
   
   useEffect(() => {
     console.log(item);
-    if (item[1] === '+') {
-      const num1 = parseFloat(item[0]);
-      const num2 = parseFloat(item[2]);
-      if (!isNaN(num1) && !isNaN(num2)) {
-        const value = num1 + num2;
-        setInputvalues(value.toString());
-      }
+    const num1 = parseFloat(item[0]);
+    const num2 = parseFloat(item[2]);
+    
+    switch (item[1]) {
+      case '+':
+        if (!isNaN(num1) && !isNaN(num2)) {
+          const value = num1 + num2;
+          setInputvalues(value.toString());
+        }
+      break;
+      case 'X':
+        if(!isNaN(num1) && !isNaN(num2)){
+          const value = num1 * num2;
+          setInputvalues(value.toString());
+        }
+      break;
+      case '-':
+        if(!isNaN(num1) && !isNaN(num2)){
+          const value = num1 - num2;
+          setInputvalues(value.toString());
+        }
+      break;
+      case '/':
+        if(!isNaN(num1) && !isNaN(num2)){
+          const value = (num1 / num2).toFixed(4)
+          setInputvalues(value.toString());
+        }
+      break;
+      case '%':
+        if(!isNaN(num1) && !isNaN(num2)){
+          const value = (num1/num2)*100
+          setInputvalues(value.toString()+"%");
+        }
+      break;
+      case '√':
+        if(!isNaN(num1) && !isNaN(num2)){
+          const value = (num1*(Math.sqrt(num2))).toFixed(5)
+          setInputvalues(value.toString());
+        }
+        else if(isNaN(num1)&& !isNaN(num2)){
+          const value = (1*Math.sqrt(num2)).toFixed(5)
+          setInputvalues(value.toString());
+        }
+      break;
+      
+
+
+
+      default:
+        break;
     }
+    
+
   }, [item]);
 
 

@@ -6,7 +6,7 @@ export default[
     },
     {
         id:2,
-        calcValues:"+-",
+        calcValues:"√",
         operator:true
 
     },
@@ -42,7 +42,7 @@ export default[
     },
     {
         id:8,
-        calcValues:"*",
+        calcValues:"X",
         operator:true
 
     },
