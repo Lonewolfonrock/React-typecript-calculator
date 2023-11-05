@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import data from './Componets/data';
 import NumbersDisplay from './Componets/Calculator'; 
